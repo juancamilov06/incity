@@ -1,0 +1,44 @@
+page-signup {
+
+    ion-grid {
+        height: 100%;
+        width: 100%;
+    }
+    h6 {
+        margin-top: 99px;
+    }
+    input {
+        border-radius: 7px;
+        margin-top: -5px;
+        padding: 6px;
+        width: 100%;
+    }
+    ion-label{
+        color: white;
+    }
+    .flex-col {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+     }
+    .view-back{
+        height: 10%;
+    }
+
+    .view-header{
+        height: 25%;
+    }
+
+    .view-content{
+        height: 65%;
+    }
+
+    .body {
+        width: 100%;
+        height: 100%;
+        background-image: url('../assets/img/signup/background.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+}

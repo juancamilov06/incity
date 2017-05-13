@@ -1,0 +1,36 @@
+page-login {
+    ion-grid {
+        height: 100%;
+    }
+    h4 {
+        color: white;
+    }
+    h6 {
+        color: white;
+    }
+    input {
+        border-radius: 7px;
+        padding: 6px;
+        width: 50%;
+    }
+    .view-login-item {
+        padding: 4px;
+        border: 2px solid crimson;
+    }
+    .body {
+        background-color: map-get($colors, genBackground)
+    }
+    .view-header{
+        height: 30%;
+        align-content: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .view-content{
+        height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

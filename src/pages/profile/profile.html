@@ -1,0 +1,78 @@
+<!--
+  Generated template for the Profile page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <button ion-button color="light" clear (click)="open();">
+    <ion-icon name='menu'></ion-icon>
+  </button>
+</ion-header>
+
+<ion-content no-padding class="body">
+    <ion-fab top center edge>
+      <button ion-fab>
+        <button ion-fab>
+          <img src="./assets/img/start/place-holder.png"/>
+        </button>
+      </button>
+    </ion-fab>  
+    <ion-grid no-padding>
+      <ion-row class="photo-title"> 
+        <ion-col text-center>
+          <h6>Cambiar foto de perfil</h6>
+        </ion-col>        
+      </ion-row>
+      <ion-row padding class="form-container">
+        <ion-col class="form-container">
+          <ion-row class="form-item">
+            <ion-col col-4 center text-left >
+              <h6>Nombre</h6>
+            </ion-col>
+            <ion-col col-8>
+              <input type="text" [(ngModel)]="firstName"/>
+            </ion-col>
+          </ion-row>
+          <ion-row class="form-item below-form">
+            <ion-col col-4 center text-left >
+              <h6>Apellido</h6>
+            </ion-col>
+            <ion-col col-8>
+              <input type="text" [(ngModel)]="lastName"/>
+            </ion-col>
+          </ion-row>
+          <ion-row class="form-item below-form">
+            <ion-col col-4 center text-left >
+              <h6>Correo</h6>
+            </ion-col>
+            <ion-col col-8>
+              <input type="text" [(ngModel)]="mail"/>
+            </ion-col>
+          </ion-row>
+          <ion-row class="form-item below-form">
+            <ion-col col-4 center text-left >
+              <h6>Telefono</h6>
+            </ion-col>
+            <ion-col col-8>
+              <input type="text" [(ngModel)]="phone"/>
+            </ion-col>
+          </ion-row>
+          <ion-row class="form-item below-form">
+            <ion-col col-4 center text-left >
+              <h6>Direccion</h6>
+            </ion-col>
+            <ion-col col-8>
+              <input type="text" [(ngModel)]="address"/>
+            </ion-col>
+          </ion-row>
+        </ion-col>               
+      </ion-row>
+      <ion-row class="form-button">
+        <ion-col text-center>
+          <img src="./assets/img/profile/update-button.png"/>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

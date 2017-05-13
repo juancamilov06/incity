@@ -1,0 +1,311 @@
+<!--
+  Generated template for the Place page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-row>
+    <ion-col>
+      <button ion-button color="light" clear (click)="open();">
+        <ion-icon name='menu'></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col text-right>
+      <button ion-button color="light" clear (click)="open();">
+        <ion-icon name='menu'></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-title>
+    <ion-row text-center>
+      <ion-col>
+        <h5 class="title">{{restaurantName}}</h5>
+      </ion-col>
+    </ion-row>
+    <ion-row class="open-circle">
+      <ion-col text-center>
+        <h6 class="circle">&#x25CF;</h6>
+      </ion-col>
+    </ion-row>
+  </ion-title>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="option">
+    <ion-segment-button value="menu">
+      Menu
+    </ion-segment-button>
+    <ion-segment-button value="comments">
+      Comentarios
+    </ion-segment-button>
+    <ion-segment-button value="info">
+      Informacion
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="option">
+    <div *ngSwitchCase="'comments'">
+      <button class="full-button" ion-button>Agregar comentario</button>
+      <ion-list *ngIf="!emptyComments">
+        <ion-item *ngFor="let comment of comments">
+          <ion-row>
+            <ion-col>
+              <h6><b>{{comment.username}}</b> - {{comment.date}}</h6>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-wrap>
+              <h6>{{comment.comment}}</h6>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+      <div class="not-found-view" *ngIf="emptyComments">
+        <ion-row>
+          <ion-col text-center>
+           <img class="not-found-img" src="./assets/img/place/not-found.png"/>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            <h6><b>No hay ninguna entrada <br> en este restaurante</b></h6>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'info'">
+      <ion-grid>
+        <ion-row class="header-container">
+          <ion-col text-center class="item-payment">
+            <img src="{{place.img_url}}"/>
+          </ion-col>
+          <ion-col text-left class="header-info">
+            <h5 class="header-title"><b>Costo de domicilio</b></h5>
+            <h6 class="header-value">{{place.delivery_cost}}</h6>
+            <h5 class="header-title"><b>Pedido minimo</b></h5>
+            <h6 class="header-value">{{place.minimum_order}}</h6>
+          </ion-col> 
+        </ion-row>
+        <ion-row class="hours-container">
+          <ion-col text-center col-12 class="col-no-padding">
+            <h5><b>Horario de atencion </b></h5>
+          </ion-col>
+          <ion-col text-center col-12 class="col-item">
+            <h6>{{place.hours}}</h6>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            <h5><b>Metodos de pago</b></h5>
+          </ion-col>
+        </ion-row>
+        <ion-list>
+          <ion-item>
+            <ion-row class="payment-info">
+              <ion-col text-center>
+                <h6><b>Efectivo</b></h6>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-list>
+      </ion-grid>
+    </div>
+
+    <div *ngSwitchCase="'menu'">
+      <ion-segment [(ngModel)]="menu">
+        <ion-segment-button value="entry">
+          Entradas
+        </ion-segment-button>
+      </ion-segment>
+      <ion-segment [(ngModel)]="menu">
+        <ion-segment-button value="main">
+          Plato fuerte
+        </ion-segment-button>
+        <ion-segment-button value="desserts">
+          Postres
+        </ion-segment-button>
+      </ion-segment>
+      <ion-segment [(ngModel)]="menu">
+        <ion-segment-button value="beverages">
+          Bebidas
+        </ion-segment-button>
+        <ion-segment-button value="liqueurs">
+          Licores
+        </ion-segment-button>
+      </ion-segment>
+
+      <div [ngSwitch]="menu">
+        <div *ngSwitchCase="'entry'" >
+          <ion-list *ngIf="!emptyEntries">
+            <ion-item *ngFor="let entry of entries">
+              <ion-row class="form-container">
+                <ion-col col-6>
+                  <img src="./assets/img/place/food_logo.jpg"/>
+                </ion-col>
+                <ion-col col-6 text-wrap>
+                  <h5 col-12><b>{{entry.name}}</b></h5>
+                  <h5 col-12 class="price-label"><b>Precio: </b>{{entry.price}}</h5>
+                  <rating readOnly="true" [(ngModel)]="entry.rating">
+                  </rating>
+                  <h6 col-12>{{entry.description}}</h6>
+                  <img class="order-button" src="../assets/img/places/order-button.png" />
+                </ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+          <div class="not-found-view" *ngIf="emptyEntries">
+            <ion-row>
+              <ion-col text-center>
+                <img class="not-found-img" src="./assets/img/place/not-found.png"/>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-center>
+                <h6><b>No hay ningun comentario <br> ¡Se el primero en opinar!</b></h6>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+
+      <div [ngSwitch]="menu">
+        <div *ngSwitchCase="'desserts'">
+          <ion-list *ngIf="!emptyDesserts">
+            <ion-item *ngFor="let dessert of desserts">
+              <ion-row class="form-container">
+                <ion-col col-6>
+                  <img src="./assets/img/place/food_logo.jpg"/>
+                </ion-col>
+                <ion-col col-6 text-wrap>
+                  <h5 col-12><b>{{dessert.name}}</b></h5>
+                  <h5 col-12 class="price-label"><b>Precio: </b>{{dessert.price}}</h5>
+                  <rating readOnly="true" [(ngModel)]="dessert.rating">
+                  </rating>
+                  <h6 col-12>{{dessert.description}}</h6>
+                  <img class="order-button" src="../assets/img/places/order-button.png" />
+                </ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+          <div class="not-found-view" *ngIf="emptyDesserts">
+            <ion-row>
+              <ion-col text-center>
+                <img class="not-found-img" src="./assets/img/place/not-found.png"/>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-center>
+                <h6><b>No hay ningun postre <br> en este restaurante</b></h6>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+
+      <div [ngSwitch]="menu">
+        <div *ngSwitchCase="'main'">
+          <ion-list *ngIf="!emptyMainCourses">
+            <ion-item *ngFor="let mainCourse of mainCourses">
+              <ion-row class="form-container">
+                <ion-col col-6>
+                  <img src="./assets/img/place/food_logo.jpg"/>
+                </ion-col>
+                <ion-col col-6 text-wrap>
+                  <h5 col-12><b>{{mainCourse.name}}</b></h5>
+                  <h5 col-12 class="price-label"><b>Precio: </b>{{mainCourse.price}}</h5>
+                  <rating readOnly="true" [(ngModel)]="mainCourse.rating">
+                  </rating>
+                  <h6 col-12>{{mainCourse.description}}</h6>
+                  <img class="order-button" src="../assets/img/places/order-button.png" />
+                </ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+          <div class="not-found-view" *ngIf="emptyMainCourses">
+            <ion-row>
+              <ion-col text-center>
+                <img class="not-found-img" src="./assets/img/place/not-found.png"/>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-center>
+                <h6><b>No hay ningun plato fuerte <br> en este restaurante</b></h6>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+
+      <div [ngSwitch]="menu">
+        <div *ngSwitchCase="'liqueurs'">
+          <ion-list *ngIf="!emptyLiqueurs">
+            <ion-item *ngFor="let liqueur of liqueurs">
+              <ion-row class="form-container">
+                <ion-col col-6>
+                  <img src="./assets/img/place/food_logo.jpg"/>
+                </ion-col>
+                <ion-col col-6 text-wrap>
+                  <h5 col-12><b>{{liqueur.name}}</b></h5>
+                  <h5 col-12 class="price-label"><b>Precio: </b>{{liqueur.price}}</h5>
+                  <rating readOnly="true" [(ngModel)]="liqueur.rating">
+                  </rating>
+                  <h6 col-12>{{liqueur.description}}</h6>
+                  <img class="order-button" src="../assets/img/places/order-button.png" />
+                </ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+          <div class="not-found-view" *ngIf="emptyLiqueurs">
+            <ion-row>
+              <ion-col text-center>
+                <img class="not-found-img" src="./assets/img/place/not-found.png"/>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-center>
+                <h6><b>No hay ningun licor <br> en este restaurante</b></h6>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+
+      <div [ngSwitch]="menu">
+        <div *ngSwitchCase="'beverages'">
+          <ion-list *ngIf="!emptyBeverages">
+            <ion-item *ngFor="let beverage of beverages">
+              <ion-row class="form-container">
+                <ion-col col-6>
+                  <img src="./assets/img/place/food_logo.jpg"/>
+                </ion-col>
+                <ion-col col-6 text-wrap>
+                  <h5 col-12><b>{{beverage.name}}</b></h5>
+                  <h5 col-12 class="price-label"><b>Precio: </b>{{beverage.price}}</h5>
+                  <rating readOnly="true" [(ngModel)]="beverage.rating">
+                  </rating>
+                  <h6 col-12>{{beverage.description}}</h6>
+                  <img class="order-button" src="../assets/img/places/order-button.png" />
+                </ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+          <div class="not-found-view" *ngIf="emptyBeverages">
+            <ion-row>
+              <ion-col text-center>
+                <img class="not-found-img" src="./assets/img/place/not-found.png"/>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-center>
+                <h6><b>No hay ninguna bebida <br> en este restaurante</b></h6>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</ion-content>

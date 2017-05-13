@@ -1,0 +1,43 @@
+page-profile {
+    .below-form{
+        margin-top: 0px;
+    }
+    .form-item{
+        align-items: center;
+        justify-content: center;
+    }
+    .form-container{
+        height: 80%;
+        align-items: center;
+        justify-content: center;
+    }
+    .form-button{
+        height: 30%;
+        align-items: center;
+        justify-content: center;
+    }
+    .photo-title{
+        margin-top: 28px;
+    }
+    ion-header{
+        background-image: url('../assets/img/profile/nav-header-background.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 150px;
+    }
+    input {
+        border-radius: 7px;
+        padding: 6px;
+        width: 100%;
+    }
+    button{
+        background: none !important;
+        background-color: none !important;
+        box-shadow: none !important;
+    }
+    ion-grid {
+        height: 100%;
+        width: 100%;
+    }
+
+}

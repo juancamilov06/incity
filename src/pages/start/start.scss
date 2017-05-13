@@ -1,0 +1,26 @@
+page-start {
+    ion-navbar{
+        background: transparent;
+    }
+    ion-header{
+        background-image: url('../assets/img/start/nav-header-background.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 150px;
+    }
+    button{
+        background: none !important;
+        background-color: none !important;
+        box-shadow: none !important;
+    }
+    ion-grid{
+        height: auto;
+        width: 100%;
+    }
+    .red-text{
+        color:red;
+    }
+    .first-label{
+        margin-top: 40px;
+    }
+}

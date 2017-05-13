@@ -1,0 +1,46 @@
+<ion-content class="body" >
+  <ion-grid>
+    <ion-row class="view-header">
+      <ion-col text-center>
+        <img src="./assets/img/login/app_logo.png" alt=""/>
+      </ion-col>
+    </ion-row>
+    <ion-row class="view-content">
+      <ion-col text-center>
+        <div class="view-login-item">
+          <h4 (click)='openLogin();'>Inicia sesion</h4>
+          <ion-grid [hidden]="!value">
+            <ion-row>
+              <ion-col col-12>
+                <input placeholder="Correo" type="text" [(ngModel)]="mail">
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12>
+                <input placeholder="Contraseña" type="password" [(ngModel)]="password">
+              </ion-col>
+            </ion-row>
+            <ion-row text-center>
+              <ion-col>
+                <h6>Olvide mi contraseña</h6>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col (click) = 'login()'>
+                <img src="./assets/img/login/login_button.png"/>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <img src="./assets/img/login/facebook_button.png">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div class="view-login-item" (click)="signUp();">
+          <h4>Registrate</h4>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

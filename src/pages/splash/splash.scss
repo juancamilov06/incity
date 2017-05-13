@@ -1,0 +1,9 @@
+page-splash {
+    ion-grid {
+        height: 100%;
+        justify-content: center;
+    }
+    .body {
+        background-color: map-get($colors, genBackground)
+    }    
+}

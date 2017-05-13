@@ -1,0 +1,33 @@
+<ion-menu [content]="content">
+
+  <!--<ion-header>
+    <ion-toolbar>
+      <ion-title>Pages</ion-title>
+    </ion-toolbar>
+  </ion-header>-->
+
+  <ion-content class="nav-content">
+    <ion-grid class="nav-list-container">
+      <ion-row class="nav-close" text-right>
+        <button ion-button color="light" clear (click)="close();">
+          <ion-icon name='close'></ion-icon>
+        </button>
+      </ion-row>
+      <ion-row class="nav-menu-list">
+        <ion-list>
+          <button class="nav-item" text-left color="light" ion-button clear *ngFor="let p of pages" (click)="openPage(p)">
+            {{p.title}}
+          </button>
+        </ion-list>
+      </ion-row>
+      <ion-row class="nav-menu-logout">
+        <button ion-button color="light" clear (click)="logout();">
+          Cerrar Sesion
+        </button>
+      </ion-row>
+    </ion-grid> 
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

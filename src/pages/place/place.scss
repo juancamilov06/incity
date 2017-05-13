@@ -1,0 +1,88 @@
+page-place {
+
+    ion-grid{
+        height: 100%;
+        width: 100%;
+    }
+    ion-header{
+        background-image: url('../assets/img/start/nav-header-background.jpg');
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 150px;
+    }
+    h6{
+        color: black;
+    }
+    ul {
+        margin-top: -4%;
+        margin-bottom: -4%;
+        padding: 0px;
+        &.rating li {
+            padding: 1px !important;
+            background: none;
+            color: #ffb400;
+
+            ion-icon {
+                font-size: 18px;
+            }
+        }
+    }
+    .header-info{
+        height: 100%;
+        padding: 0 !important;
+        justify-content: center;
+    }
+    .item-payment{
+        display: flex!important;
+        align-content: center!important;
+        align-items: center!important;
+    }
+    .hours-container{
+        height: 4%;
+        border: 1px solid crimson;
+    }
+    .col-item{
+        margin-top: -6%;
+    }
+    .header-value{
+        margin-top: -4%;
+    }
+    .header-container{
+        height: 20%;
+    }
+    .not-found-view{
+        height: 100%;
+        padding-top: 20%;
+    }
+    .not-found-img{
+        height: 80px;
+        width: 80px;
+    }
+    .place-label{
+        margin-top: -3%;
+    }
+    .order-button{
+        margin-top: 5px;
+    }
+    .form-container{
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .title{
+        color: white;
+    }
+    .full-button{
+        width: 100%;
+    }
+    .open-circle{
+        margin-top: -50px;
+    }
+    .circle {
+      font-size: 40px;
+      color: green;
+    }
+}
