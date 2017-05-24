@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams, MenuController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { CONFIG } from '../../providers/constants.js';
 
 @Component({
   selector: 'page-splash',
@@ -8,7 +9,8 @@ import { LoginPage } from '../login/login';
 })
 export class SplashPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams
+                  , public menu: MenuController) {
     this.menu.enable(false);
   }
   

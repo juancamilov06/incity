@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import {NavController, NavParams, AlertController, LoadingController, MenuController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
-import { StartPage } from '../start/start'
+import { StartPage } from '../start/start';
+import { CONFIG } from '../../providers/constants.js';
 
 @Component({
   selector: 'page-signup',
@@ -73,7 +74,7 @@ export class SignUpPage {
 
     let body = new FormData();
     body.append('data', JSON.stringify(data));
-    this.http.post('https://incitybackend.000webhostapp.com/auth/create', body, headers)
+    this.http.post('http://' + CONFIG.host +'/incity/api/auth/create', body, headers)
         .map(res => res.json())
         .subscribe(data => {
           loader.dismiss();
@@ -88,10 +89,13 @@ export class SignUpPage {
             this.storage.ready().then(() => {
               this.storage.set('token', '').then(() => {
                 this.storage.set('token', data.data.token).then(() => {
-                  this.start();
+                  this.storage.set('exp', data.data.expiration).then(() => {
+                    this.storage.set('city_id', '1').then(() => {
+                      this.start();
+                    });
+                  });
                 });
-              });
-              
+              });              
             });
           }
         }, error => {

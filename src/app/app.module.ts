@@ -13,11 +13,19 @@ import { ProfilePage } from '../pages/profile/profile';
 import { StartPage } from '../pages/start/start';
 import { PlacesPage } from '../pages/places/places';
 import { PlacePage } from '../pages/place/place';
+import { TermsPage } from '../pages/terms/terms';
+import { HelpPage } from '../pages/help/help';
+import { AddCommentModal } from '../pages/add-comment/add-comment';
+import { CitiesPopOver } from '../pages/cities/cities';
+import { AddItemPage } from '../pages/add-item/add-item';
+import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart';
+import { OrdersPage } from '../pages/orders/orders';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
+
 
 import { Ionic2RatingModule } from 'ionic2-rating';
 
@@ -33,7 +41,14 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     ProfilePage,
     StartPage,
     PlacesPage,
-    PlacePage
+    PlacePage,
+    TermsPage,
+    AddCommentModal,
+    CitiesPopOver,
+    HelpPage,
+    AddItemPage,
+    ShoppingCartPage,
+    OrdersPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +72,14 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     ProfilePage,
     StartPage,
     PlacesPage,
-    PlacePage
+    PlacePage,
+    TermsPage,
+    AddCommentModal,
+    CitiesPopOver,
+    HelpPage,
+    AddItemPage,
+    ShoppingCartPage,
+    OrdersPage
   ],
   providers: [
     StatusBar,

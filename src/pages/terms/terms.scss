@@ -1,0 +1,12 @@
+page-terms {
+    ion-header{
+        background-color: map-get($colors , genBackground);
+    }
+    .paragraph{
+        background-color: #E5E5E5;
+        padding: 16px;
+    }
+    .title-nav{
+        color: white;
+    }
+}

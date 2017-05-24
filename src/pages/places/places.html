@@ -7,12 +7,17 @@
 <ion-header>
   <ion-row>
     <ion-col col-2>
-      <button ion-button color="light" clear (click)="open();">
-        <ion-icon name='menu'></ion-icon>
+      <button ion-button icon-only  color="light" clear (click)="back();">
+        <ion-icon name='arrow-back'></ion-icon>
       </button>
     </ion-col>
-    <ion-col col-10>
+    <ion-col text-center col-8>
       <h6 class="title-nav">{{option}}</h6>
+    </ion-col>
+    <ion-col col-2>
+      <button ion-button icon-only  color="light" clear (click)="open();">
+        <ion-icon name='menu'></ion-icon>
+      </button>
     </ion-col>
   </ion-row>
 </ion-header>
@@ -51,7 +56,7 @@
           <rating [(ngModel)]="restaurant.rating" readOnly="true">
           </rating>
           <h6 col-12>{{restaurant.description}}</h6>
-          <img class="order-button" src="../assets/img/places/order-button.png" />
+          <img class="order-button" src="./assets/img/places/order-button.png" />
         </ion-col>
       </ion-row>
     </ion-item>

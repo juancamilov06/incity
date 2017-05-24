@@ -20,6 +20,12 @@ page-start {
     .red-text{
         color:red;
     }
+    .title{
+        color: white;
+    }
+    .setting-button{
+        background-color: map-get($colors , genBackground );
+    }
     .first-label{
         margin-top: 40px;
     }

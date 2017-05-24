@@ -1,0 +1,27 @@
+page-help {
+    ion-header{
+        background-color: map-get($colors , genBackground);
+    }
+    textarea {
+        border-radius: 7px;
+        padding: 6px;
+        width: 100%;
+    }
+    .paragraph{
+        background-color: #E5E5E5;
+        padding: 16px;
+    }
+    .title-nav{
+        color: white;
+    }
+    .list-item{
+        padding: 5px;
+        background-color: map-get($colors , listItemBackground);
+    }
+    .item-centered{
+        display: flex!important;
+        align-content: center!important;
+        align-items: center!important;
+    }
+
+}

@@ -4,6 +4,7 @@ import {NavController, NavParams , AlertController, LoadingController, MenuContr
 import { SignUpPage } from '../signup/signup'
 import { StartPage } from '../start/start'
 import { Storage } from '@ionic/storage';
+import { CONFIG } from '../../providers/constants.js';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -47,7 +48,7 @@ export class LoginPage {
     body.append('mail', this.mail);
     body.append('password', this.password);
 
-    this.http.post('https://incitybackend.000webhostapp.com/auth', body, headers)
+    this.http.post('http://' + CONFIG.host +'/incity/api/auth', body, headers)
         .map(res => res.json())
         .subscribe(data => {
           console.log(data);
@@ -64,7 +65,9 @@ export class LoginPage {
             this.storage.ready().then(() => {
               this.storage.set('token', '').then(() => {
                 this.storage.set('token', data.data.token).then(() => {
-                  this.start();
+                  this.storage.set('exp', data.data.expiration).then(() => {
+                    this.start();
+                  });
                 });
               });
             });
@@ -83,10 +86,23 @@ export class LoginPage {
   }
 
   start(){
-    this.navCtrl.push(StartPage).then(() => {
-      const index = this.navCtrl.getActive().index;
-      this.navCtrl.remove(0, index);
-    });
+    this.storage.ready().then(() => {
+      this.storage.get('city_id').then(data => {
+        if(!data){
+          this.storage.set('city_id', '1').then(data => {
+              this.navCtrl.push(StartPage).then(() => {
+              const index = this.navCtrl.getActive().index;
+              this.navCtrl.remove(0, index);
+            });
+          });
+        }
+
+        this.navCtrl.push(StartPage).then(() => {
+          const index = this.navCtrl.getActive().index;
+          this.navCtrl.remove(0, index);
+        });
+      })
+    })
   }
 
   showEmptyAlert() {

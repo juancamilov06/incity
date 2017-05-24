@@ -1,0 +1,74 @@
+<!--
+  Generated template for the AddItem page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-row>
+    <ion-col col-2>
+      <button ion-button icon-only  color="light" clear (click)="close();">
+        <ion-icon name='close'></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col text-center col-8>
+      <h4 class="title-nav">Agregar</h4>
+    </ion-col>
+    <ion-col col-2>
+    </ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <h4 class="add-title"><b>Tu Plato</b></h4>
+    </ion-col>
+  </ion-row>
+  <ion-row class="basic-info">
+    <ion-col col-4>
+      <img src="https://www.takeouttaxidelivery.com/editable/templates/default/images/img_step03.png"/>
+    </ion-col>
+    <ion-col col-8 text-wrap>
+      <h5><b>{{item.name}}</b> - ${{item.price}}</h5>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <h4 class="add-title"><b>Contenido del plato</b></h4>
+      <h6>{{item.description}}</h6>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="hasAdditions">
+    <ion-list-header color="primary">Adiciones</ion-list-header>
+    <ion-list>
+      <ion-item *ngFor="let addition of additions">
+        <ion-label><b>{{addition.name}}</b> - ${{addition.price}}</ion-label>
+        <ion-checkbox (click)="addItem(addition);" color="dark" checked="{{addition.isAdded}}"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </ion-row>
+  <br>
+  <ion-row>
+    <ion-col>
+      <h5><b>Plato    </b></h5>
+      <h5 *ngIf="hasAdditions"><b>Adiciones</b></h5>
+      <h5><b>Total</b></h5>
+    </ion-col>
+    <ion-col>
+      <h5>${{item.price}}</h5>
+      <h5 *ngIf="hasAdditions">${{additionsTotal}}</h5>
+      <h5>${{total}}</h5>
+    </ion-col>
+  </ion-row>
+  <br>
+  <ion-row class="no-padding">
+    <ion-col col-8 text-center class="no-padding">
+      <button class="full-button" ion-button (click)="addToCart();">Agregar</button>
+    </ion-col>
+    <ion-col col-4 text-center class="no-padding">
+      <button class="full-button" (click)="close();" ion-button>Cancelar</button>
+    </ion-col>
+  </ion-row>  
+</ion-content>
+

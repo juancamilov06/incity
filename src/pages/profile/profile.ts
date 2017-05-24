@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { CONFIG } from '../../providers/constants.js';
 import { Storage } from '@ionic/storage';
 
 /**
@@ -35,16 +36,16 @@ export class ProfilePage {
     headers.append('Content-Type', 'application/json');
     this.storage.ready().then(() => {
       this.storage.get('token').then((token) => {
-        this.http.get('https://incitybackend.000webhostapp.com/profile?token='+token, headers)
+        this.http.get('http://' + CONFIG.host +'/incity/api/profile?token='+token, headers)
         .map(res => res.json())
         .subscribe(data => {
           loader.dismiss();
+          console.log(data);
           this.firstName = data.data.first_name;
           this.lastName = data.data.last_name;
           this.mail = data.data.mail;
           this.address = data.data.address;
           this.phone = data.data.phone;
-          console.log(data);
         }, error => {
           loader.dismiss();
           console.log(error);
@@ -60,6 +61,10 @@ export class ProfilePage {
 
   open(){
     this.menu.open();
+  }
+
+  back(){
+    this.navCtrl.pop();
   }
 
 }

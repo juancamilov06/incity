@@ -7,12 +7,12 @@
 <ion-header>
   <ion-row>
     <ion-col>
-      <button ion-button color="light" clear (click)="open();">
-        <ion-icon name='menu'></ion-icon>
+      <button ion-button icon-only  color="light" clear (click)="back();">
+        <ion-icon name='arrow-back'></ion-icon>
       </button>
     </ion-col>
     <ion-col text-right>
-      <button ion-button color="light" clear (click)="open();">
+      <button ion-button icon-only  color="light" clear (click)="open();">
         <ion-icon name='menu'></ion-icon>
       </button>
     </ion-col>
@@ -46,7 +46,7 @@
 
   <div [ngSwitch]="option">
     <div *ngSwitchCase="'comments'">
-      <button class="full-button" ion-button>Agregar comentario</button>
+      <button class="full-button" ion-button (click)="openModal();">Agregar comentario</button>
       <ion-list *ngIf="!emptyComments">
         <ion-item *ngFor="let comment of comments">
           <ion-row>
@@ -139,7 +139,7 @@
       <div [ngSwitch]="menu">
         <div *ngSwitchCase="'entry'" >
           <ion-list *ngIf="!emptyEntries">
-            <ion-item *ngFor="let entry of entries">
+            <ion-item *ngFor="let entry of entries"  (click)="openAddItem(entry)">
               <ion-row class="form-container">
                 <ion-col col-6>
                   <img src="./assets/img/place/food_logo.jpg"/>
@@ -150,7 +150,7 @@
                   <rating readOnly="true" [(ngModel)]="entry.rating">
                   </rating>
                   <h6 col-12>{{entry.description}}</h6>
-                  <img class="order-button" src="../assets/img/places/order-button.png" />
+                  <img class="order-button" src="./assets/img/places/order-button.png" />
                 </ion-col>
               </ion-row>
             </ion-item>
@@ -184,7 +184,7 @@
                   <rating readOnly="true" [(ngModel)]="dessert.rating">
                   </rating>
                   <h6 col-12>{{dessert.description}}</h6>
-                  <img class="order-button" src="../assets/img/places/order-button.png" />
+                  <img class="order-button" src="./assets/img/places/order-button.png" />
                 </ion-col>
               </ion-row>
             </ion-item>
@@ -218,7 +218,7 @@
                   <rating readOnly="true" [(ngModel)]="mainCourse.rating">
                   </rating>
                   <h6 col-12>{{mainCourse.description}}</h6>
-                  <img class="order-button" src="../assets/img/places/order-button.png" />
+                  <img class="order-button" src="./assets/img/places/order-button.png" />
                 </ion-col>
               </ion-row>
             </ion-item>
@@ -252,7 +252,7 @@
                   <rating readOnly="true" [(ngModel)]="liqueur.rating">
                   </rating>
                   <h6 col-12>{{liqueur.description}}</h6>
-                  <img class="order-button" src="../assets/img/places/order-button.png" />
+                  <img class="order-button" src="./assets/img/places/order-button.png" />
                 </ion-col>
               </ion-row>
             </ion-item>
@@ -286,7 +286,7 @@
                   <rating readOnly="true" [(ngModel)]="beverage.rating">
                   </rating>
                   <h6 col-12>{{beverage.description}}</h6>
-                  <img class="order-button" src="../assets/img/places/order-button.png" />
+                  <img class="order-button" src="./assets/img/places/order-button.png" />
                 </ion-col>
               </ion-row>
             </ion-item>
@@ -305,7 +305,22 @@
           </div>
         </div>
       </div>
-      
     </div>
   </div>
 </ion-content>
+
+<ion-footer class="footer-container">
+  <ion-row class="footer-content">
+    <ion-col col-2>
+      <button ion-button icon-only  color="light" clear (click)="openShoppingCart();">
+        <ion-icon name='arrow-up'></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col text-center col-8 (click)="openShoppingCart();">
+      <h4 class="title-nav">Carrito ({{orderItems.length}})</h4>
+    </ion-col>
+    <ion-col col-2 class="trash-content" (click)="deleteOrder();">
+      <img src="./assets/img/place/trash.png"/>
+    </ion-col>
+  </ion-row>
+</ion-footer>

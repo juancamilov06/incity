@@ -1,0 +1,33 @@
+<!--
+  Generated template for the AddComment page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content class="comment-body">
+  <ion-grid class="no-padding">
+    <ion-row>
+      <ion-col text-center text-wrap>
+        <h6>Califica el sitio</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <rating readOnly="false" [(ngModel)]="rating"></rating>
+      </ion-col>
+    </ion-row>
+    <ion-row class="input-container">
+      <ion-col>
+        <textarea maxlength="499" class="comment-input" [(ngModel)]="comment" placeholder="¡Cuentanos tu experiencia!"></textarea>
+      </ion-col>
+    </ion-row>
+    <ion-row class="no-padding">
+      <ion-col col-8 class="no-padding" text-center>
+        <button class="full-button" ion-button (click)="accept();">Comentar</button>
+      </ion-col>
+      <ion-col col-4 class="no-padding" text-center>
+        <button class="full-button" (click)="dismiss();" ion-button>Cancelar</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

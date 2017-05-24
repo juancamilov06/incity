@@ -4,6 +4,11 @@ page-place {
         height: 100%;
         width: 100%;
     }
+    textarea {
+        border-radius: 7px;
+        padding: 6px;
+        width: 100%;
+    }
     ion-header{
         background-image: url('../assets/img/start/nav-header-background.jpg');
         background-repeat: no-repeat;
@@ -40,9 +45,27 @@ page-place {
         align-content: center!important;
         align-items: center!important;
     }
+    .footer-content{
+        height: 100%;
+    }
+    .trash-content{
+        display: flex!important;
+        align-content: center!important;
+        align-items: center!important;
+        justify-content: center !important;
+    }
+    .title-nav{
+        color: white;
+    }
+    .footer-container{
+        background-color: map-get($colors, genBackground);
+    }
+    .footer-item{
+        color: white;
+    }
     .hours-container{
         height: 4%;
-        border: 1px solid crimson;
+        border: 1px solid map-get($colors , primary );
     }
     .col-item{
         margin-top: -6%;

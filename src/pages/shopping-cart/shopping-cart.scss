@@ -1,0 +1,14 @@
+page-shopping-cart {
+    ion-header{
+        background-color: map-get($colors , genBackground);
+    }
+    .title-nav{
+        color: white;
+    }
+    .trash-content{
+        display: flex!important;
+        align-content: center!important;
+        align-items: center!important;
+        justify-content: center !important;
+    }
+}

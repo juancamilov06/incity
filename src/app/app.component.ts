@@ -6,14 +6,15 @@ import { Storage } from '@ionic/storage';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
 import { SplashPage } from '../pages/splash/splash';
-import { LoginPage } from '../pages/login/login';
-import { SignUpPage } from '../pages/signup/signup';
-import { ProfilePage } from '../pages/profile/profile';
-import { StartPage } from '../pages/start/start';
-import { PlacesPage } from '../pages/places/places';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { PlacePage } from '../pages/place/place';
+
+
+import { OrdersPage } from '../pages/orders/orders';
+import { LoginPage } from '../pages/login/login'; 
+import { HelpPage } from '../pages/help/help';
+import { StartPage } from '../pages/start/start';
+import { TermsPage } from '../pages/terms/terms';
 
 
 @Component({
@@ -37,7 +38,10 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Inicio', component: StartPage }
+      { title: 'Inicio', component: StartPage },
+      { title: 'Terminos', component: TermsPage},
+      { title: 'Ayuda', component: HelpPage},
+      { title: 'Mis Pedidos', component: OrdersPage }
     ];
   }
 
@@ -65,8 +69,9 @@ export class MyApp {
   openPage(page) {
     // close the menu when clicking a link from the menu
     this.menu.close();
+    if(this.nav.getActive().component != page.component){
+      this.nav.push(page.component);
+    }
     // navigate to the new page if it is not the current page
-    this.nav.push(page.component);
-    this.nav.setRoot(page.component);
   }
 }

@@ -1,0 +1,106 @@
+<!--
+  Generated template for the ShoppingCart page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-row>
+    <ion-col col-2>
+      <button ion-button icon-only  color="light" clear (click)="back();">
+        <ion-icon name='arrow-down'></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col text-center col-8>
+      <h4 class="title-nav">Carrito ({{orderItems.length}})</h4>
+    </ion-col>
+    <ion-col col-2 class="trash-content" (click)="deleteOrder();">
+      <img src="./assets/img/place/trash.png"/>
+    </ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <ion-list-header text-center color="primary">Pedido</ion-list-header>
+      <ion-list>
+        <ion-item *ngFor="let item of orderItems">
+          <ion-row>
+            <ion-col col-6 text-wrap>
+              <h5><b>{{item.name}}</b></h5>
+              <h6>${{item.price}}</h6>
+            </ion-col>
+            <ion-col text-left col-1 class="trash-content">
+              <button ion-button icon-only  color="dark" clear (click)="removeItem(item);">
+                <ion-icon name='remove'></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col text-center col-2>
+              <h5><b>Cant.</b></h5>
+              <h2>{{item.quantity}}</h2>
+            </ion-col>
+            <ion-col text-right col-1 class="trash-content">
+              <button ion-button icon-only  color="okGreen" clear (click)="addItem(item);">
+                <ion-icon name='add'></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col text-right col-2 class="trash-content">
+              <button ion-button icon-only  color="iconBlack" clear (click)="deletePrompt(item);">
+                <img src="./assets/img/shopping-cart/trash.png"/>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="hasAdditions">
+    <ion-col>
+      <ion-list-header text-center color="primary">Adiciones</ion-list-header>
+      <ion-list>
+        <ion-item *ngFor="let addition of additions">
+          <ion-row>
+            <ion-col col-6 tex-wrap>
+              <h5><b>{{addition.name}}</b></h5>
+              <h6>${{addition.price}}</h6>
+            </ion-col>
+            <ion-col text-left col-1 class="trash-content">
+              <button ion-button icon-only  color="dark" clear (click)="removeAddition(item);">
+                <ion-icon name='remove'></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col text-center col-2>
+              <h5><b>Cant.</b></h5>
+              <h2>{{addition.quantity}}</h2>
+            </ion-col>
+            <ion-col text-right col-1 class="trash-content">
+              <button ion-button icon-only  color="okGreen" clear (click)="addAddition(addition);">
+                <ion-icon name='add'></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col text-right col-2 class="trash-content">
+              <button ion-button icon-only  color="iconBlack" clear (click)="deleteAdditionPrompt(addition);">
+                <img src="./assets/img/shopping-cart/trash.png"/>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-list-header text-center color="primary">Informacion</ion-list-header>
+      <h6><b>Pedido</b> - {{orderItemsTotal}}</h6>
+      <h6 *ngIf="hasAdditions"><b>Adiciones</b> - {{additionsTotal}}</h6>
+      <h6><b>Domicilio</b> - {{delivery}}</h6>
+      <h6><b>TOTAL</b> - {{orderTotal}}</h6>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col text-center> 
+      <img src="./assets/img/shopping-cart/request-button.png" (click)="getCurrentAddress();"/>
+    </ion-col>
+  </ion-row>
+</ion-content>
