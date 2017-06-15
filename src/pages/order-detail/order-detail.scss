@@ -1,0 +1,20 @@
+page-order-detail {
+
+    ion-header{
+        background-image: url('../assets/img/start/nav-header-background.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 150px;
+    }
+    .red-text{
+        color: map-get($colors , primary );
+    }
+    .state-container{
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+        background-color: #E2E2E2;
+    }
+
+}

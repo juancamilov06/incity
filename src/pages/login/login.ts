@@ -76,13 +76,12 @@ export class LoginPage {
             console.log(error);
             loader.dismiss();
             let alert = this.alertCtrl.create({
-            title: 'Error',
-            subTitle: 'Intentelo de nuevo mas tarde',
-            buttons: ['OK']
-          });
-          alert.present();
+              title: 'Error',
+              subTitle: 'Intentelo de nuevo mas tarde',
+              buttons: ['OK']
+            });
+            alert.present();
         });
-    
   }
 
   start(){
@@ -91,9 +90,9 @@ export class LoginPage {
         if(!data){
           this.storage.set('city_id', '1').then(data => {
               this.navCtrl.push(StartPage).then(() => {
-              const index = this.navCtrl.getActive().index;
-              this.navCtrl.remove(0, index);
-            });
+                const index = this.navCtrl.getActive().index;
+                this.navCtrl.remove(0, index);
+              });
           });
         }
 

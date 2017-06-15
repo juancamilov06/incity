@@ -20,8 +20,7 @@
   <ion-title>
     <ion-row>
       <ion-col text-center text-wrap>
-        <h4 class="title">{{firstName}}</h4>
-        <h5 class="title">{{lastName}}</h5>
+        <h4 class="title">{{firstName}} {{lastName}}</h4>
       </ion-col>
     </ion-row>
   </ion-title>
@@ -57,14 +56,8 @@
       </ion-col>
     </ion-row>
     <ion-list>
-      <ion-item>
-        <img src="./assets/img/start/promo.jpg"/>
-      </ion-item>
-      <ion-item>
-        <img src="./assets/img/start/promo.jpg"/>
-      </ion-item>
-      <ion-item>
-        <img src="./assets/img/start/promo.jpg"/>
+      <ion-item *ngFor="let promo of promos">
+        <img src="{{promo.img_url}}"/>
       </ion-item>
     </ion-list>
   </ion-grid>

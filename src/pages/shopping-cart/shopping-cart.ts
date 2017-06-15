@@ -146,7 +146,7 @@ export class ShoppingCartPage {
 
     this.storage.ready().then(() => {
       this.storage.get('token').then((token) => {
-        this.http.post('http://www.sepuedegroup.com/incity/api/order?token='+token, body, headers)
+        this.http.post('http://' + CONFIG.host +'/incity/api/order?token='+token, body, headers)
         .map(res => res.json())
         .subscribe(data => {
           loader.dismiss();

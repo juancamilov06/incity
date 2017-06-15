@@ -19,6 +19,8 @@ import { CONFIG } from '../../providers/constants.js';
 })
 export class StartPage {
 
+  promos: Array<any> = new Array();
+
   firstName: string;
   lastName: string;
   comesFromCreation: boolean;
@@ -29,6 +31,7 @@ export class StartPage {
     this.menu.enable(true);
     this.comesFromCreation = this.navParams.get('fromCreation');
     this.getData();
+    this.getPromos();
   }
 
   ionViewDidLoad() {
@@ -43,11 +46,37 @@ export class StartPage {
 
     popover.onDidDismiss((data) => {
       if(data != null){
-        this.storage.set('city_id', data).then(() => {
-          this.getData();
+        this.storage.ready().then(() =>{
+          this.storage.set('city_id', data).then(() => {
+            this.getPromos();
+          });
         });
       }
     })
+  }
+
+  getPromos(){
+    let loader = this.loading.create({content: "Espera un momento"});
+    loader.present();
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.storage.ready().then(() => {
+      this.storage.get('token').then((token) => {
+        this.storage.get('city_id').then((cityId) => {
+          this.http.get('http://' + CONFIG.host +'/incity/api/promos/' + cityId + '?token='+token, headers)
+          .map(res => res.json())
+          .subscribe(data => {
+            loader.dismiss();
+            this.promos = data.promos;
+            console.log(data);
+          }, error => {
+            loader.dismiss();
+            console.log(error);
+          });
+        });
+      });
+    });
   }
 
   getData(){

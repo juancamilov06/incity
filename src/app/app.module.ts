@@ -20,6 +20,7 @@ import { CitiesPopOver } from '../pages/cities/cities';
 import { AddItemPage } from '../pages/add-item/add-item';
 import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart';
 import { OrdersPage } from '../pages/orders/orders';
+import { OrderDetailPage } from '../pages/order-detail/order-detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -48,7 +49,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     HelpPage,
     AddItemPage,
     ShoppingCartPage,
-    OrdersPage
+    OrdersPage,
+    OrderDetailPage
   ],
   imports: [
     BrowserModule,
@@ -79,7 +81,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     HelpPage,
     AddItemPage,
     ShoppingCartPage,
-    OrdersPage
+    OrdersPage,
+    OrderDetailPage
   ],
   providers: [
     StatusBar,

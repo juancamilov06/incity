@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
+import { OrderDetailPage } from '../order-detail/order-detail';
 import { CONFIG } from '../../providers/constants.js';
 
 /**
@@ -30,6 +31,13 @@ export class OrdersPage {
 
   back(){
     this.navCtrl.pop();
+  }
+
+  openOrder(order){
+    this.navCtrl.push(OrderDetailPage, {
+      order_id: order.id,
+      code: order.code
+    });
   }
 
   getOrderHistory(){

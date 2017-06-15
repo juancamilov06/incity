@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { SplashPage } from '../pages/splash/splash';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { OrderDetailPage } from '../pages/order-detail/order-detail';
 
 
 import { OrdersPage } from '../pages/orders/orders';
@@ -54,6 +55,7 @@ export class MyApp {
     });
   }
 
+  
   logout(){
     this.storage.ready().then(() => {
       this.storage.set('token', '').then(() => {

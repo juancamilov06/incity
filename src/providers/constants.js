@@ -1,3 +1,3 @@
 export const CONFIG = {
-    host: "10.100.100.4"
+    host: "192.168.1.63"
 };
