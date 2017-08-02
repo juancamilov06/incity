@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, LoadingController, PopoverController } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
 import { PlacesPage } from '../places/places';
+import { BookingPlacesPage } from '../booking-places/booking-places';
 import { Http } from '@angular/http';
 import { CitiesPopOver } from '../cities/cities';
 import { Storage } from '@ionic/storage';
@@ -112,6 +113,12 @@ export class StartPage {
   openRestaurants(){
     this.navCtrl.push(PlacesPage, {
       option: 'Domicilios'
+    });
+  }
+
+  openBookings(){
+    this.navCtrl.push(BookingPlacesPage, {
+      option: 'Reservas'
     });
   }
 

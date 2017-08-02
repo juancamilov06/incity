@@ -15,6 +15,8 @@ import { PlacesPage } from '../pages/places/places';
 import { PlacePage } from '../pages/place/place';
 import { TermsPage } from '../pages/terms/terms';
 import { HelpPage } from '../pages/help/help';
+import { BookingPage } from '../pages/booking/booking';
+import { BookingPlacesPage } from '../pages/booking-places/booking-places';
 import { AddCommentModal } from '../pages/add-comment/add-comment';
 import { CitiesPopOver } from '../pages/cities/cities';
 import { AddItemPage } from '../pages/add-item/add-item';
@@ -50,7 +52,9 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     AddItemPage,
     ShoppingCartPage,
     OrdersPage,
-    OrderDetailPage
+    OrderDetailPage,
+    BookingPlacesPage,
+    BookingPage
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,9 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     AddItemPage,
     ShoppingCartPage,
     OrdersPage,
-    OrderDetailPage
+    OrderDetailPage,
+    BookingPlacesPage,
+    BookingPage
   ],
   providers: [
     StatusBar,

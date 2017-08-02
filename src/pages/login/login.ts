@@ -36,7 +36,7 @@ export class LoginPage {
     if(this.isEmpty(this.mail) || this.isEmpty(this.password)){
       this.showEmptyAlert();
       return;
-    }
+    } 
 
     let loader = this.loading.create({content: "Espera un momento"});
     loader.present();
@@ -94,11 +94,12 @@ export class LoginPage {
                 this.navCtrl.remove(0, index);
               });
           });
+          return;
         }
 
         this.navCtrl.push(StartPage).then(() => {
-          const index = this.navCtrl.getActive().index;
-          this.navCtrl.remove(0, index);
+            const index = this.navCtrl.getActive().index;
+            this.navCtrl.remove(0, index);
         });
       })
     })

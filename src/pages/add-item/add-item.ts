@@ -119,7 +119,7 @@ export class AddItemPage {
     headers.append('Content-Type', 'application/json');
     this.storage.ready().then(() => {
       this.storage.get('token').then((token) => {
-        this.http.get('http://' + CONFIG.host + '/incity/api/restaurant/' + restaurantId + '/item/' + itemId + '/additions?token=' + token, headers)
+        this.http.get('http://' + CONFIG.host + '/incity/api/place/' + restaurantId + '/item/' + itemId + '/additions?token=' + token, headers)
         .map(res => res.json())
         .subscribe(data => {
           loader.dismiss();

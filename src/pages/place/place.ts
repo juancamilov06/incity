@@ -313,7 +313,7 @@ export class PlacePage {
     headers.append('Content-Type', 'application/json');
     this.storage.ready().then(() => {
       this.storage.get('token').then((token) => {
-        this.http.get('http://www.sepuedegroup.com/incity/api/restaurant/'+ restaurantId+'/profile?token=' + token, headers)
+        this.http.get('http://' + CONFIG.host +'/incity/api/place/'+ restaurantId+'/profile?token=' + token, headers)
         .map(res => res.json())
         .subscribe(data => {
           loader.dismiss();

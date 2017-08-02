@@ -173,7 +173,7 @@
       <div [ngSwitch]="menu">
         <div *ngSwitchCase="'desserts'">
           <ion-list *ngIf="!emptyDesserts">
-            <ion-item *ngFor="let dessert of desserts">
+            <ion-item *ngFor="let dessert of desserts"  (click)="openAddItem(dessert)">
               <ion-row class="form-container">
                 <ion-col col-6>
                   <img src="./assets/img/place/food_logo.jpg"/>
@@ -207,7 +207,7 @@
       <div [ngSwitch]="menu">
         <div *ngSwitchCase="'main'">
           <ion-list *ngIf="!emptyMainCourses">
-            <ion-item *ngFor="let mainCourse of mainCourses">
+            <ion-item *ngFor="let mainCourse of mainCourses"  (click)="openAddItem(mainCourse)">
               <ion-row class="form-container">
                 <ion-col col-6>
                   <img src="./assets/img/place/food_logo.jpg"/>

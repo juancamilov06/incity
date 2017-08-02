@@ -1,7 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides,MenuController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides
+    , MenuController, LoadingController, ModalController
+    , ToastController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
+import { BookingPage } from '../booking/booking';
 import { CONFIG } from '../../providers/constants.js';
 import { PlacePage } from '../place/place';
 
@@ -12,10 +15,10 @@ import { PlacePage } from '../place/place';
  * on Ionic pages and navigation.
  */
 @Component({
-  selector: 'page-places',
-  templateUrl: 'places.html',
+  selector: 'booking-places',
+  templateUrl: 'booking-places.html',
 })
-export class PlacesPage {
+export class BookingPlacesPage {
   @ViewChild(Slides) slides: Slides;
 
   option: string = '';
@@ -30,8 +33,8 @@ export class PlacesPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams
-        , public loading: LoadingController, public storage: Storage
-        , public http: Http, public menu: MenuController) {
+        , public loading: LoadingController, public modalCtrl: ModalController,public storage: Storage
+        , public http: Http, public menu: MenuController, public toastCtrl: ToastController) {
       this.option = this.navParams.get('option');          
   }
 
@@ -42,10 +45,28 @@ export class PlacesPage {
   }
 
   itemClicked(restaurant){
-    this.navCtrl.push(PlacePage, {
-      restaurantId:restaurant.id,
-      restaurantName: restaurant.name
-    })
+    let popover = this.modalCtrl.create(BookingPage, {
+        place: restaurant
+    });
+    popover.onDidDismiss(data => {
+        if(data.closed == true){
+          return;
+        }
+        if(data.success){
+            this.toastCtrl.create({
+                message: 'Reserva con codigo ' + data.code + " enviada al restaurante",
+                duration: 3000,
+                position: 'top'
+            }).present();
+            return;
+        }
+        this.toastCtrl.create({
+            message: 'La reserva no se pudo crear',
+            duration: 3000,
+            position: 'top'
+        }).present();
+    });
+    popover.present();
   }
 
   onCancel(ev){
@@ -77,7 +98,7 @@ export class PlacesPage {
     this.storage.ready().then(() => {
       this.storage.get('token').then((token) => {
         this.storage.get('city_id').then((cityId) => {
-          this.http.get('http://' + CONFIG.host +'/incity/api/city/'+ cityId +'/places/delivery?token=' + token, headers)
+          this.http.get('http://' + CONFIG.host +'/incity/api/city/'+ cityId +'/places/booking?token=' + token, headers)
           .map(res => res.json())
           .subscribe(data => {
             loader.dismiss();

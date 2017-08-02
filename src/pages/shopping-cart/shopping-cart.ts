@@ -130,10 +130,12 @@ export class ShoppingCartPage {
 
     let data = {
       items: itemsToSend,
-      restaurant: this.place,
+      place: this.place,
       total: this.orderTotal,
       address: address
     }
+
+    console.log(this.place);
 
     let loader = this.loading.create({content: "Espera un momento"});
     loader.present();
